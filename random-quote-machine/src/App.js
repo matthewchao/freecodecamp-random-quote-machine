@@ -5,6 +5,42 @@ import { Counter } from './features/counter/Counter';
 import './App.css';
 
 
+
+function App() {
+  return (
+    <div className="App">
+      <main id="quote-box">
+        <blockquote>
+
+        </blockquote>
+        <ul className="social-links">
+          <li>
+            <a href="#" id="tweet-quote">
+              <button>
+                Press me
+              </button>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" id="facebook-quote">
+              <button>
+                Press me
+              </button>
+            </a>
+          </li>
+        </ul>
+        <button id="new-quote">
+          The New Quote Button
+        </button>
+      </main>
+      <footer>
+        By Matthew Chao
+      </footer>
+    </div>
+  )
+}
+
 /*
 function App() {
   return (
@@ -57,6 +93,6 @@ function App() {
     </div>
   );
 }
-*/
 
+*/
 export default App;

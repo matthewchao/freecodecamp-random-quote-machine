@@ -24,6 +24,7 @@ export function Counter() {
         >
           +
         </button>
+        {/* below {count} is where the current state is displayed */}
         <span className={styles.value}>{count}</span>
         <button
           className={styles.button}

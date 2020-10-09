@@ -22,6 +22,8 @@ export const counterSlice = createSlice({
   },
 });
 
+// https://redux-toolkit.js.org/api/createSlice#return-value
+// below are generated action creatorsbelow {count} is where the current state is displayed corresponding to the reducers above
 export const { increment, decrement, incrementByAmount } = counterSlice.actions;
 
 // The function below is called a thunk and allows us to perform async logic. It

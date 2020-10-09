@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <main id="quote-box">
         <blockquote>
-
+          Hi there!
         </blockquote>
         <ul className="social-links">
           <li>

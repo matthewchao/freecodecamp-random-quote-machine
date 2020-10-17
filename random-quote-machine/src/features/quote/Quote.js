@@ -21,9 +21,12 @@ import { createSlice } from "@reduxjs/toolkit";
 const quoteSlice = createSlice({
     name: 'quote',
     initialState: {
-        index: 0,
-        color: 'rgb(255,255,255)'
+        index: 0, //initial quote is the first one
+        color: 'rgb(255,255,255)' //initial background color is white
     },
+
+    //reducers is an object with reducing functions for different actions
+    //in our case "change" would correspond to a switch statement on action.type == 'change'
     reducers: {
         change: state => {
             // the only criterion is that we insist the new index is different from the old one

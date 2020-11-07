@@ -25,7 +25,7 @@ class App extends React.Component {
   handleClick() {
     console.log("clicked!");
     let newIndex = null;
-    while (newIndex == null || newIndex == this.state.currIndex) {
+    while (newIndex === null || newIndex === this.state.currIndex) {
       newIndex = Math.floor(Math.random() * n);
     }
     this.setState({

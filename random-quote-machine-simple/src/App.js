@@ -39,7 +39,7 @@ class App extends React.Component {
           <div>will display quote with index: {this.state.currIndex}</div>
           <QuoteBox />
           {/* <button onClick={this.handleClick}>Get a new quote</button> */}
-          <ChangeQuoteButton />
+          <ChangeQuoteButton handleClick={this.handleClick} />
           <img src={logo} className="App-logo" alt="logo" />
           <p>
             Edit <code>src/App.js</code> and save to reload.

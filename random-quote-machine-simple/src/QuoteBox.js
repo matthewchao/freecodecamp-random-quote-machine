@@ -11,7 +11,7 @@ class QuoteBox extends React.Component {
 
   render() {
     return (
-      <blockquote>
+      <blockquote className="quote-box">
         <p>{this.state.quotation}</p>
         <footer>{this.state.quotationSource}</footer>
       </blockquote>

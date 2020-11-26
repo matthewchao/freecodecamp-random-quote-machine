@@ -12,7 +12,7 @@ const quoteBank = [
   { quote: "herro" },
 ];
 
-const n = quoteBank.length;
+// const n = quoteBank.length;
 
 const initialQuote = {
   quote: "Click the button to get a random quote!",
@@ -28,10 +28,10 @@ class App extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
   handleClick() {
-    console.log("clicked!");
+    // console.log("clicked!");
     let newIndex = null;
     while (newIndex === null || newIndex === this.state.currIndex) {
-      newIndex = Math.floor(Math.random() * n);
+      newIndex = Math.floor(Math.random() * quoteBank.length);
     }
     this.setState({
       currIndex: newIndex,

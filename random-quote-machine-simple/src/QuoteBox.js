@@ -1,19 +1,17 @@
 import React from "react";
 
 class QuoteBox extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      quotation: "Click the button to get a random quote!",
-      quotationSource: "made by Matthew Chao",
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   //the initial state
 
-  render() {
+  // }
+
+  render(props) {
     return (
       <blockquote className="quote-box">
-        <p>{this.state.quotation}</p>
-        <footer>{this.state.quotationSource}</footer>
+        <p>{this.props.quote}</p>
+        <footer>{this.props.author}</footer>
       </blockquote>
     );
   }

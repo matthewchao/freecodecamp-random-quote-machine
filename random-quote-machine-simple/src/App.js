@@ -14,11 +14,16 @@ const quoteBank = [
 
 const n = quoteBank.length;
 
+const initialQuote = {
+  quote: "Click the button to get a random quote!",
+  author: "made by Matthew Chao",
+};
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currIndex: null,
+      currIndex: null, //the index of the quote to get
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -37,7 +42,12 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <div>will display quote with index: {this.state.currIndex}</div>
-          <QuoteBox />
+          <QuoteBox
+            // distinguish between the initial state (where currIndex==null) vs afterward
+            {...(this.state.currIndex
+              ? quoteBank[this.state.currIndex]
+              : initialQuote)}
+          />
           {/* <button onClick={this.handleClick}>Get a new quote</button> */}
           <ChangeQuoteButton handleClick={this.handleClick} />
           <img src={logo} className="App-logo" alt="logo" />

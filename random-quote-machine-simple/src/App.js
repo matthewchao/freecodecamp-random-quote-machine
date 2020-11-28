@@ -5,6 +5,7 @@ import "./App.css";
 // my imports:
 import QuoteBox from "./components/QuoteBox.js";
 import ChangeQuoteButton from "./components/ChangeQuoteButton.js";
+import SocialLinks from "./components/SocialLinks.js";
 
 const quoteBank = [
   { quote: "Hi", author: "mc" },
@@ -41,7 +42,6 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <div>will display quote with index: {this.state.currIndex}</div>
           <QuoteBox
             // distinguish between the initial state (where currIndex==null) vs afterward
             {...(this.state.currIndex === null
@@ -62,7 +62,11 @@ class App extends React.Component {
           >
             Learn React
           </a> */}
+          {this.state.currIndex != null && (
+            <SocialLinks {...quoteBank[this.state.currIndex]} />
+          )}
         </header>
+        {/* {} */}
       </div>
     );
   }

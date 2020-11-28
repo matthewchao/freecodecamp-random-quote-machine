@@ -1,11 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import TextInput from "./components/TextInput";
+import { render } from "@testing-library/react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
+class App extends React.Component {
+  state = {
+    input: "",
+    changes: 0
+  }
+
+  handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) : void => {
+    this.setState({
+      input: event.target.value
+    })
+  }
+
+  render() {
+    return (
+      <div className="App">
+        {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
@@ -18,9 +32,11 @@ function App() {
         >
           Learn React
         </a>
-      </header>
-    </div>
-  );
+      </header> */}
+        <TextInput changeHandler={this.handleChange} input={this.state.input} />
+      </div>
+    );
+  }
 }
 
 export default App;

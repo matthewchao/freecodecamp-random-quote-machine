@@ -44,9 +44,9 @@ class App extends React.Component {
           <div>will display quote with index: {this.state.currIndex}</div>
           <QuoteBox
             // distinguish between the initial state (where currIndex==null) vs afterward
-            {...(this.state.currIndex
-              ? quoteBank[this.state.currIndex]
-              : initialQuote)}
+            {...(this.state.currIndex === null
+              ? initialQuote
+              : quoteBank[this.state.currIndex])}
           />
           {/* <button onClick={this.handleClick}>Get a new quote</button> */}
           <ChangeQuoteButton handleClick={this.handleClick} />

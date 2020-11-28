@@ -11,7 +11,9 @@ class QuoteBox extends React.Component {
     return (
       <blockquote className="quote-box">
         <p>{this.props.quote}</p>
-        <footer>{this.props.author}</footer>
+        <footer>
+          {this.props.author ? this.props.author : "<No author provided>"}
+        </footer>
       </blockquote>
     );
   }

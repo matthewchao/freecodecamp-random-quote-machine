@@ -5,6 +5,7 @@ function SocialLinks(props) {
     <div>
       <a
         class="twitter-share-button"
+        // see https://developer.twitter.com/en/docs/twitter-for-websites/tweet-button/overview
         href={"https://twitter.com/intent/" + encodeURIComponent(props.quote)}
       >
         Tweet

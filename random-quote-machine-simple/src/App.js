@@ -3,8 +3,8 @@ import React from "react";
 import "./App.css";
 
 // my imports:
-import QuoteBox from "./QuoteBox.js";
-import ChangeQuoteButton from "./ChangeQuoteButton.js";
+import QuoteBox from "./components/QuoteBox.js";
+import ChangeQuoteButton from "./components/ChangeQuoteButton.js";
 
 const quoteBank = [
   { quote: "Hi", author: "mc" },

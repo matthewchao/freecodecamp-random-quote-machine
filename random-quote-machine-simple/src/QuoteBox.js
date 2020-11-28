@@ -1,22 +1,13 @@
 import React from "react";
 
-class QuoteBox extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   //the initial state
-
-  // }
-
-  render(props) {
-    return (
-      <blockquote className="quote-box">
-        <p>{this.props.quote}</p>
-        <footer>
-          {this.props.author ? this.props.author : "<No author provided>"}
-        </footer>
-      </blockquote>
-    );
-  }
+function QuoteBox(props) {
+  return (
+    <blockquote className="quote-box">
+      <p>{props.quote}</p>
+      {/* for ?? see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator */}
+      <footer>{props.author ?? "<No author provided>"}</footer>
+    </blockquote>
+  );
 }
 
 export default QuoteBox;

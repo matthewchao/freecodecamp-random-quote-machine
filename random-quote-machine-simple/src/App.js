@@ -1,6 +1,7 @@
 import React from "react";
 // import logo from "./logo.svg";
 import "./App.css";
+import axios from "axios";
 
 // my imports:
 import QuoteBox from "./components/QuoteBox.js";
@@ -20,6 +21,23 @@ const initialQuote = {
   author: "made by Matthew Chao",
 };
 
+const N = 1000000;
+const lengthN = 7;
+async function getMovieTitle(index) {
+  return axios
+    .get(
+      `http://www.omdbapi.com/?i=tt${index
+        .toString()
+        .padStart(lengthN, "0")}&apikey=65715595`
+    )
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -29,14 +47,18 @@ class App extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
   handleClick() {
+    const randIndex = Math.floor(Math.random() * N) + 1;
+    console.log("using index ", randIndex);
+
+    getMovieTitle(randIndex);
     // console.log("clicked!");
-    let newIndex = null;
-    while (newIndex === null || newIndex === this.state.currIndex) {
-      newIndex = Math.floor(Math.random() * quoteBank.length);
-    }
-    this.setState({
-      currIndex: newIndex,
-    });
+    // let newIndex = null;
+    // while (newIndex === null || newIndex === this.state.currIndex) {
+    //   newIndex = Math.floor(Math.random() * quoteBank.length);
+    // }
+    // this.setState({
+    //   currIndex: newIndex,
+    // });
   }
   render() {
     return (

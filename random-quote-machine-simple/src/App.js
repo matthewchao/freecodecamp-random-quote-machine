@@ -23,7 +23,7 @@ const initialQuote = {
 
 const N = 1000000;
 const lengthN = 7;
-async function getMovieTitle(index) {
+async function getMovieActorAndTitle(index) {
   return axios
     .get(
       `http://www.omdbapi.com/?i=tt${index
@@ -32,25 +32,62 @@ async function getMovieTitle(index) {
     )
     .then((res) => {
       console.log(res);
+      if (res.data.Error)
+        return Promise.reject(new Error("bad data from omdbapi"));
+      return res.data;
+      /* Error: "Incorrect IMDb ID."
+Response: "False"
+*/
+    })
+    .then((data) => {
+      const { Actors, Title } = data;
+      console.log({ Actors, Title });
+      return { Actors, Title };
     })
     .catch((err) => {
       console.error(err);
     });
 }
 
+/*
+The app will have a "loading" state
+When the button is clicked, loading is set to true
+
+When the promise returns, the state is set to false,
+as well as the quote showing;
+
+*/
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       currIndex: null, //the index of the quote to get
+      loading: false,
     };
     this.handleClick = this.handleClick.bind(this);
   }
-  handleClick() {
+  async handleClick() {
     const randIndex = Math.floor(Math.random() * N) + 1;
     console.log("using index ", randIndex);
+    this.setState({
+      loading: true,
+    });
+    console.log("loading set to true!");
+    try {
+      const { Actors, Title } = await getMovieActorAndTitle(randIndex);
+      console.log("loading set back to false!");
+      this.setState({
+        loading: false,
+      });
+    } catch (e) {
+      console.log("loading set back to false!");
+      this.setState({
+        loading: false,
+      });
+      console.error(e);
+    }
 
-    getMovieTitle(randIndex);
     // console.log("clicked!");
     // let newIndex = null;
     // while (newIndex === null || newIndex === this.state.currIndex) {
@@ -71,7 +108,10 @@ class App extends React.Component {
               : quoteBank[this.state.currIndex])}
           />
           {/* <button onClick={this.handleClick}>Get a new quote</button> */}
-          <ChangeQuoteButton handleClick={this.handleClick} />
+          <ChangeQuoteButton
+            loading={this.state.loading}
+            handleClick={this.handleClick}
+          />
           {/* <img src={logo} className="App-logo" alt="logo" />
           <p>
             Edit <code>src/App.js</code> and save to reload.

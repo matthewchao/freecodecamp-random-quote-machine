@@ -1,4 +1,5 @@
 import React from "react";
+import "./ChangeQuoteButton.css";
 
 class ChangeQuoteButton extends React.Component {
   //   constructor(props) {
@@ -7,7 +8,13 @@ class ChangeQuoteButton extends React.Component {
 
   render() {
     return (
-      <button onClick={this.props.handleClick}>Click for a new quote</button>
+      <button
+        // className="Button"
+        className={"Button " + (this.props.loading ? "loading" : "")}
+        onClick={this.props.handleClick}
+      >
+        Click for a new quote
+      </button>
     );
   }
 }

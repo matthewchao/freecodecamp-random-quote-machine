@@ -11,6 +11,7 @@ class ChangeQuoteButton extends React.Component {
       <button
         // className="Button"
         className={"Button " + (this.props.loading ? "loading" : "")}
+        disabled={this.props.loading}
         onClick={this.props.handleClick}
       >
         Click for a new quote

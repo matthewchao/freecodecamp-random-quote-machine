@@ -21,7 +21,7 @@ const initialQuote = {
   author: "made by Matthew Chao",
 };
 
-const N = 1000000;
+const N = 100000;
 const lengthN = 7;
 async function getMovieActorAndTitle(index) {
   return axios

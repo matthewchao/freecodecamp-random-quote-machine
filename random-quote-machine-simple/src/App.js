@@ -17,7 +17,7 @@ const quoteBank = [
 // const n = quoteBank.length;
 
 const initialQuote = {
-  quote: "Click the button to get a random movie title and actors!",
+  quote: "Click the button to get a random movie title (and its actors)!",
   author: "made by Matthew Chao",
 };
 
@@ -65,25 +65,31 @@ class App extends React.Component {
   // }
 
   state = {
-    currIndex: null, //the index of the quote to get
+    // currIndex: null, //the index of the quote to get
     // see https://reactjs.org/docs/faq-ajax.html for example
     loading: false,
+    quote: null,
+    author: null,
   };
   handleClick = async () => {
     const randIndex = Math.floor(Math.random() * N) + 1;
-    console.log("using index ", randIndex);
+    console.log("using ID = ", randIndex);
     this.setState({
       loading: true,
     });
-    console.log("loading set to true!");
+    console.log("Clicked, loading set to true!");
     try {
       const { Actors, Title } = await getMovieActorAndTitle(randIndex);
-      console.log("loading set back to false!");
+      this.setState({
+        quote: Title,
+        author: Actors,
+      });
+      console.log("Returned, loading set back to false!");
       this.setState({
         loading: false,
       });
     } catch (e) {
-      console.log("loading set back to false!");
+      console.log("Returned, loading set back to false!");
       this.setState({
         loading: false,
       });
@@ -104,10 +110,11 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <QuoteBox
+            loading={this.state.loading}
             // distinguish between the initial state (where currIndex==null) vs afterward
-            {...(this.state.currIndex === null
+            {...(this.state.quote === null
               ? initialQuote
-              : quoteBank[this.state.currIndex])}
+              : { quote: this.state.quote, author: this.state.author })}
           />
           {/* <button onClick={this.handleClick}>Get a new quote</button> */}
           <ChangeQuoteButton

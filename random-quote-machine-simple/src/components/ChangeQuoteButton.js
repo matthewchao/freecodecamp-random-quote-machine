@@ -14,7 +14,7 @@ class ChangeQuoteButton extends React.Component {
         disabled={this.props.loading}
         onClick={this.props.handleClick}
       >
-        Click for a new quote
+        Click for a new movie title
       </button>
     );
   }

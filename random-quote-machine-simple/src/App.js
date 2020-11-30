@@ -17,7 +17,7 @@ const quoteBank = [
 // const n = quoteBank.length;
 
 const initialQuote = {
-  quote: "Click the button to get a random quote!",
+  quote: "Click the button to get a random movie title and actors!",
   author: "made by Matthew Chao",
 };
 
@@ -63,6 +63,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       currIndex: null, //the index of the quote to get
+      // see https://reactjs.org/docs/faq-ajax.html for example
       loading: false,
     };
     this.handleClick = this.handleClick.bind(this);

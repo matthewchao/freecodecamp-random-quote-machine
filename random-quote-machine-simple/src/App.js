@@ -59,16 +59,17 @@ as well as the quote showing;
 */
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currIndex: null, //the index of the quote to get
-      // see https://reactjs.org/docs/faq-ajax.html for example
-      loading: false,
-    };
-    this.handleClick = this.handleClick.bind(this);
-  }
-  async handleClick() {
+  // constructor(props) {
+  //   super(props);
+  //   this.handleClick = this.handleClick.bind(this);
+  // }
+
+  state = {
+    currIndex: null, //the index of the quote to get
+    // see https://reactjs.org/docs/faq-ajax.html for example
+    loading: false,
+  };
+  handleClick = async () => {
     const randIndex = Math.floor(Math.random() * N) + 1;
     console.log("using index ", randIndex);
     this.setState({
@@ -97,7 +98,7 @@ class App extends React.Component {
     // this.setState({
     //   currIndex: newIndex,
     // });
-  }
+  };
   render() {
     return (
       <div className="App">
